@@ -32,12 +32,15 @@ function doPost(e) {
     var sumToday = summary[summary.length-1][3]; //summaryから最新日付の累計陽性者数を所得
     var sum1wAgo = summary[summary.length-8][3]; //最新日付の１週間前のデータを所得
     var sum2wAgo = summary[summary.length-15][3]; //最新日付の２週間前のデータを所得
+    var death = summary[summary.length-1][8]; //summaryから最新日付の死者数を所得
     var change1w = sumToday - sum1wAgo; //直近１週間の増加数を計算
     var change1wb = sum1wAgo - sum2wAgo; //上記の前の週の増加数を計算
     var rNumber = (change1w / change1wb)**(4.2 / 6.3);　//ＲＯ計算式：（直近7日間の新規陽性者数／その前7日間の新規陽性者数）^（平均世代時間／報告間隔）
-    rNumber = rNumber.toFixed(2);　//平均世代時間を4.2、報告間隔を6.3として簡易的に計算した値を小数点第二位の数値に成型
+    rNumber = rNumber.toFixed(2);　//平均世代時間を4.2、報告間隔を6.3として簡易的に計算した値を小数点第２位の数値に成型
+    var mortality = death/sumToday*100; //死亡率を計算
+    mortality = mortality.toFixed(1); //小数点第１位の数値に成型
     
-    var message = `【${target} のcovid-19感染状況】[${date}] 陽性: ${testedPositive}, 検査人数: ${tested}, R0: ${rNumber} `; //R0表示欄を追加
+    var message = `【${target} のcovid-19感染状況】[${date}] 陽性: ${testedPositive}, 検査人数: ${tested}, 【国内】死亡率: ${mortality+'%'}, R0: ${rNumber} `; //死亡率とR0を追加
   
     // Slack に送信
     var options = {
