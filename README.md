@@ -1,5 +1,5 @@
 # covid19Bot
-release #  'covid19 Prefecturename(Japan)' と入力すると感染状況＋国内死亡率とR0(基本再生産数)を返すBotです。
+release #1  'covid19 Prefecturename(Japan)' と入力すると感染状況＋国内死亡率とR0(基本再生産数)を返すBotです。
 
 Ｎ予備校　2020夏の特別授業 ”Google Apps で作る Slack Bot” で作った教材に、国内死亡率とR0(基本再生産数)の表示機能を追加しました。
 基本再生産数の計算式は、（直近7日間の新規陽性者数／その前7日間の新規陽性者数）^（平均世代時間／報告間隔）です。
