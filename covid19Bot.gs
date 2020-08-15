@@ -38,7 +38,11 @@ function doPost(e) {
     var rNumber = (change1w / change1wb)**(4.2 / 6.3);　//ＲＯ計算式：（直近7日間の新規陽性者数／その前7日間の新規陽性者数）^（平均世代時間／報告間隔）
     rNumber = rNumber.toFixed(2);　//平均世代時間を4.2、報告間隔を6.3として簡易的に計算した値を小数点第２位の数値に成型
     var testedPositiveRatio = testedPositive / tested *100;//検査陽性率を計算
-    testedPositiveRatio = testedPositiveRatio.toFixed(1);//小数点第１位の数値に成型
+       if (tested == 0){
+      testedPositiveRatio = 'N/A'; //検査人数がゼロの時は'N/A'を代入
+    }else{
+      testedPositiveRatio = testedPositiveRatio.toFixed(1); //小数点第１位の数値に成型
+    }
     var mortality = death/sumToday*100; //死亡率を計算
     mortality = mortality.toFixed(1); //小数点第１位の数値に成型
     
