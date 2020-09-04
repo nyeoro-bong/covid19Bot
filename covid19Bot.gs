@@ -28,8 +28,9 @@
     }else{
       fatality = fatality.toFixed(2);//小数点第２位の数値に成型
     }
-  
-    var message = `【${target} のcovid-19感染状況】[${date}] 陽性: ${testedPositive}, 検査人数: ${tested}, 検査陽性率: ${testedPositiveRatio +'%'}, 重症者: ${serious}, 死者: ${deaths}, 死亡率: ${fatality +'%'}`;
+  var R0 = latest[11];
+
+    var message = `【${target} のcovid-19感染状況】[${date}] 陽性: ${testedPositive}, 検査人数: ${tested}, 検査陽性率: ${testedPositiveRatio +'%'}, 重症者: ${serious}, 死者: ${deaths}, 死亡率: ${fatality +'%'}, R0: ${R0}`;
 
     // Slack に送信
     var options = {
