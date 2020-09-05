@@ -22,7 +22,7 @@
   var sumtestedPositive = latest[5];
   var serious =latest[8];
   var deaths =latest[10];
-  var fatality = deaths / sumtestedPositive *100;//陽性死亡率を計算
+  var fatality = deaths / sumtestedPositive *100;//検査陽性死亡率を計算
     if (deaths == 0){
       fatality = 'N/A'; //死者数がゼロの時は'N/A'を代入
     }else{
@@ -30,7 +30,7 @@
     }
   var R0 = latest[11];
 
-    var message = `【${target} のcovid-19感染状況】[${date}] 陽性: ${testedPositive}, 検査人数: ${tested}, 検査陽性率: ${testedPositiveRatio +'%'}, 重症者: ${serious}, 死者: ${deaths}, 死亡率: ${fatality +'%'}, R0: ${R0}`;
+    var message = `【${target} のcovid-19感染状況】[${date}] 陽性数: ${testedPositive}, 検査数: ${tested}, 検査陽性率: ${testedPositiveRatio +'%'}, 重症者: ${serious}, 死者: ${deaths}, 死亡率: ${fatality +'%'}, R0: ${R0}`;
 
     // Slack に送信
     var options = {
